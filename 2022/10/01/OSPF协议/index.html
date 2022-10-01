@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OSPF协议 | 睿的小屋子</title><meta name="keywords" content="该死的OSPF"><meta name="author" content="睿"><meta name="copyright" content="睿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="OSPF协议OSPF有几种报文？1234567891、hello，用于协商维持建立OSPF邻居2、DD报文，用于交互LSA的摘要信息3、LSR报文，用于请求一条LSA4、LSU报文，用于发送LSA的详细信息5、LSACK，用于对接收到的LSA进行确认  Hello报文1234567version，描述版本号message Type 协议报文类型source ospf router，描述发送该hel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSPF协议">
+<meta property="og:url" content="http://example.com/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="睿的小屋子">
+<meta property="og:description" content="OSPF协议OSPF有几种报文？1234567891、hello，用于协商维持建立OSPF邻居2、DD报文，用于交互LSA的摘要信息3、LSR报文，用于请求一条LSA4、LSU报文，用于发送LSA的详细信息5、LSACK，用于对接收到的LSA进行确认  Hello报文1234567version，描述版本号message Type 协议报文类型source ospf router，描述发送该hel">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png">
+<meta property="article:published_time" content="2022-10-01T03:03:30.000Z">
+<meta property="article:modified_time" content="2022-10-01T03:06:01.158Z">
+<meta property="article:author" content="睿">
+<meta property="article:tag" content="-该死的OSOF协议">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png"><link rel="shortcut icon" href="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.dtstatic.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620224412_yhzfu.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.dtstatic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1667012047&t=35fc6a9e601a1c56b9ea28d8cbc41b7f"><link rel="canonical" href="http://example.com/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-01 11:06:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="睿的小屋子" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.dtstatic.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620224412_yhzfu.thumb.1000_0.jpg&amp;refer=http%3A%2F%2Fc-ssl.dtstatic.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1667012047&amp;t=35fc6a9e601a1c56b9ea28d8cbc41b7f" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">睿的小屋子</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">OSPF协议</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-01T03:03:30.000Z" title="发表于 2022-10-01 11:03:30">2022-10-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-01T03:06:01.158Z" title="更新于 2022-10-01 11:06:01">2022-10-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="OSPF协议"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="OSPF协议"><a href="#OSPF协议" class="headerlink" title="OSPF协议"></a>OSPF协议</h2><h3 id="OSPF有几种报文？"><a href="#OSPF有几种报文？" class="headerlink" title="OSPF有几种报文？"></a>OSPF有几种报文？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、hello，用于协商维持建立OSPF邻居</span><br><span class="line"></span><br><span class="line">2、DD报文，用于交互LSA的摘要信息</span><br><span class="line"></span><br><span class="line">3、LSR报文，用于请求一条LSA</span><br><span class="line"></span><br><span class="line">4、LSU报文，用于发送LSA的详细信息</span><br><span class="line"></span><br><span class="line">5、LSACK，用于对接收到的LSA进行确认</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hello报文"><a href="#Hello报文" class="headerlink" title="Hello报文"></a>Hello报文</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">version，描述版本号</span><br><span class="line">message Type 协议报文类型</span><br><span class="line">source ospf router，描述发送该hello报文的路由器ID</span><br><span class="line">area ID,描述发送该报文的接口在哪个区域</span><br><span class="line">checksum 校验和，用于保证保证报文的完整性</span><br><span class="line">auth Type 认证类型，Null</span><br><span class="line">auth data 认证数据</span><br></pre></td></tr></table></figure>
+
+<h3 id="DR与BDR选举原则"><a href="#DR与BDR选举原则" class="headerlink" title="DR与BDR选举原则"></a>DR与BDR选举原则</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、优先级，默认1，越大越优先</span><br><span class="line">2、当优先级一致，比较接口地址大的为DR</span><br><span class="line">3、DR优先级为0，则不参与DR与BDR的选举</span><br><span class="line">4、DR与BDR选举完成，不允许被强占</span><br></pre></td></tr></table></figure>
+
+<h3 id="OSPF邻居建立条件"><a href="#OSPF邻居建立条件" class="headerlink" title="OSPF邻居建立条件"></a>OSPF邻居建立条件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、版本一致</span><br><span class="line">2、Router ID不能冲突</span><br><span class="line">3、区域ID一致</span><br><span class="line">4、认证类型和密码一致</span><br><span class="line">5、俩端IP需要在同一网段（掩码相同）</span><br><span class="line">6、hello报文发送间隔时间一致</span><br><span class="line">7、dead时间一致</span><br><span class="line">8、option字段中N和E一致</span><br><span class="line">9、俩段MTU的接口一致</span><br></pre></td></tr></table></figure>
+
+<h6 id="DD报文包括摘要信息。LSA"><a href="#DD报文包括摘要信息。LSA" class="headerlink" title="DD报文包括摘要信息。LSA"></a>DD报文包括摘要信息。LSA</h6><p>OSPF涉及到五种报文，7个状态</p>
+<h3 id="OSPF协议如何保证报文可靠性传输？"><a href="#OSPF协议如何保证报文可靠性传输？" class="headerlink" title="OSPF协议如何保证报文可靠性传输？"></a>OSPF协议如何保证报文可靠性传输？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、邻居建立的三次握手</span><br><span class="line">2、重传机制</span><br><span class="line">3、LSR、LSU和LSACK显示确认机制，DD报文的隐式确认</span><br></pre></td></tr></table></figure>
+
+<p>发送空的DD报文，目的是为了主从选举，按需同步。</p>
+<h3 id="OSPF的七种状态"><a href="#OSPF的七种状态" class="headerlink" title="OSPF的七种状态"></a>OSPF的七种状态</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">down——代表osf没有发现任何OSPF邻居</span><br><span class="line">init——代表发现OSPF邻居</span><br><span class="line">2-way——收到OSPF邻居的hello报文，并发现对方的active-neighbor有自身的router-id</span><br><span class="line">Exstart——用于发送空的DD报文，互相进行主从选举</span><br><span class="line">Exchange——当确定主从关系后，进入到exchange状态发送带有LSA摘要信息的DD报文</span><br><span class="line">Loading——当收到对方的DD报文后，同时发现M=0，将会进入到loading状态请求自身没有的LSA</span><br><span class="line">Full——当自身请求列表中，所有接收的LSA，对方都发送过来之后，将会进入到Full状态</span><br></pre></td></tr></table></figure>
+
+<h3 id="OSPF-LSDB的交互原则："><a href="#OSPF-LSDB的交互原则：" class="headerlink" title="OSPF LSDB的交互原则："></a>OSPF LSDB的交互原则：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、互相交互自身没有的LSA</span><br><span class="line">2、以及使用新的LSA，替换掉旧的LSA</span><br></pre></td></tr></table></figure>
+
+<h3 id="如何判断唯一的LSA？"><a href="#如何判断唯一的LSA？" class="headerlink" title="如何判断唯一的LSA？"></a>如何判断唯一的LSA？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LSA的三要素：</span><br><span class="line">	1、LSA类型（type）</span><br><span class="line">	2、LSA的ID（链路状态ID） link State ID</span><br><span class="line">	3、LSA的通告者 adv router</span><br></pre></td></tr></table></figure>
+
+<h3 id="如和判断LSA的新旧状态？"><a href="#如和判断LSA的新旧状态？" class="headerlink" title="如和判断LSA的新旧状态？"></a>如和判断LSA的新旧状态？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、首先比较LSA的序列号，初始0x80000001每次OSPF更新，都会+1</span><br><span class="line">2、序列号相同，则比较检验和，值越大越优先</span><br><span class="line">3、当检验和相同，则比较LSA的age时间</span><br><span class="line">	（1）首先age=3600s的LSA，用于删除一条LSA</span><br><span class="line">	（2）如果俩条LSA的age时间相差大于900s，将会选中age数值小的LSA。</span><br><span class="line">	（3）如果俩条LSa的age时间小于900s，将会认为相同，保持原有不变。</span><br></pre></td></tr></table></figure>
+
+<p>每个OSPF路由器，都会用一类LSA描述自身所有启用的OSPF的接口</p>
+<h3 id="OSPF的更新机制有俩种："><a href="#OSPF的更新机制有俩种：" class="headerlink" title="OSPF的更新机制有俩种："></a>OSPF的更新机制有俩种：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、触发更新，当链路状态发生改变之后，OSPF将会触发更新，比如网段掩码变了，取消宣告</span><br><span class="line">2、周期更新，每个OSPF路由器自身产生的LSA都会间隔30分钟周期更新一次</span><br></pre></td></tr></table></figure>
+
+<h3 id="OSPF的老化机制："><a href="#OSPF的老化机制：" class="headerlink" title="OSPF的老化机制："></a>OSPF的老化机制：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OSPF路由器每产生一条LSA，都会在一个age时间为3600s，初始值为1，当age时间递增到3600s之后，将会认为LSA老化，从自身LSDB中删除。</span><br></pre></td></tr></table></figure>
+
+<h3 id="OSPF删除机制："><a href="#OSPF删除机制：" class="headerlink" title="OSPF删除机制："></a>OSPF删除机制：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当OSPF需要删除一条LSA的时候，将会把LSA的age时间变化为3600s，当其他的路由器收到该LSA之后，将会把自身LSDB中对应的LSA删除。</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2022/10/12/d4Mh7Vr6nJAQCgW.png">https://s2.loli.net/2022/10/12/d4Mh7Vr6nJAQCgW.png</a></p>
+<h3 id="OSPF网络类型：4-种"><a href="#OSPF网络类型：4-种" class="headerlink" title="OSPF网络类型：4 种"></a>OSPF网络类型：4 种</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、P2P：链路层协议是PPP，HDLC，默认是P2P</span><br><span class="line">2、P2MP（点到多点）DS-VPN，DM-VPN</span><br><span class="line">	hello报文是组播形式224.0.0.5，其余报文（DD，LSR，LSU，LSACK）为单播</span><br><span class="line">3、Broadcast广播类型：组播224.0..5</span><br><span class="line">4、MA</span><br><span class="line">5、NBMA，没有广播和组播功能的环境，以单播发送报文。</span><br></pre></td></tr></table></figure>
+
+<p>BMA 广播多路访问—————-&gt;—-以太网（共享式）—–双绞线</p>
+<p>网络类型</p>
+<p>BMA 广播多路访问—————-&gt;—-以太网（共享式）—–双绞线</p>
+<table>
+<thead>
+<tr>
+<th>生存时间=10</th>
+<th>死亡时间=40</th>
+<th>子网掩码是否协商：是</th>
+<th>需不需要选举DR/BDR：需要</th>
+<th>邻居</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>NBMA 非广播多路访问———-&gt;——全互联FR（帧中继）—串行电缆</p>
+<table>
+<thead>
+<tr>
+<th>生存时间=30</th>
+<th>死亡时间=120</th>
+<th>子网掩码是否协商：是</th>
+<th>需不需要选举DR/BDR：需要</th>
+<th>邻居</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>P2P 点到点——————–&gt;——-ppp/HDLC————–串行电缆</p>
+<table>
+<thead>
+<tr>
+<th>生存时间=10</th>
+<th>死亡时间=40</th>
+<th>子网掩码是否协商：否</th>
+<th>需不需要选举DR/BDR：不需要</th>
+<th>邻接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>P2MP 点到多点————–&gt;——–非全互联FR—————串行电缆</p>
+<table>
+<thead>
+<tr>
+<th>生存时间=30</th>
+<th>死亡时间=120</th>
+<th>子网掩码是否协商：是</th>
+<th>需不需要选举DR/BDR：不需要</th>
+<th>邻接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Virtual 虚拟网络 ———–&gt;———-vlink———————-双绞线</p>
+<table>
+<thead>
+<tr>
+<th>生存时间=10</th>
+<th>死亡时间=40</th>
+<th>子网掩码是否协商：否</th>
+<th>需不需要选举DR/BDR：不需要</th>
+<th>邻接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>当一个区域内地俩台路由器，一端是P2P另一端是BMA，邻居关系可以建立，邻接关系可以起来，但是不会传路由</p>
+<h3 id="LSU和LSACK的发送地址根据路由器角色有所变化"><a href="#LSU和LSACK的发送地址根据路由器角色有所变化" class="headerlink" title="LSU和LSACK的发送地址根据路由器角色有所变化"></a>LSU和LSACK的发送地址根据路由器角色有所变化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）DRother--DRother产生的LSU通过224.0.0.6发送给DR和BDR。</span><br><span class="line"></span><br><span class="line">2）DR通过224.0.0.5发送给其他的DRohter和BDR</span><br></pre></td></tr></table></figure>
+
+<h3 id="DR和BDR的区别："><a href="#DR和BDR的区别：" class="headerlink" title="DR和BDR的区别："></a>DR和BDR的区别：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1）DR收到DRother的LSU则泛洪，BDR不进行反馈</span><br><span class="line"></span><br><span class="line">DR和BDR同时监听224.0.0.5和224.0.0.6</span><br><span class="line"></span><br><span class="line">2）DRother不监听224.0.0.6，仅监听224.0.0.5</span><br></pre></td></tr></table></figure>
+
+<p>LSR是以单播进发送</p>
+<h2 id="OSPF域间路由—LSA"><a href="#OSPF域间路由—LSA" class="headerlink" title="OSPF域间路由—LSA"></a>OSPF域间路由—LSA</h2><p>链路类型：</p>
+<p>​    P2P:描述了对端链路信息和本端链路信息</p>
+<p>​    （描述了从一台路由器到另外一台路由器之间点到点的链路信息。用来描述拓扑信息）（P2P P2MP）</p>
+<p>​    transNET：</p>
+<p>​                        描述了从一台路由器需要经过一个transit（BMA/NBMA网络）网络的网段信息。用来描述拓扑信息。 </p>
+<p>​    STUBnet：</p>
+<p>​                        用来描述路由器本端loopback接口信息。用来描述路由信息。</p>
+<h3 id="一类LSA"><a href="#一类LSA" class="headerlink" title="一类LSA"></a>一类LSA</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">一类LSA：router-LSA 路由器-LSA</span><br><span class="line">		LSID:router-ID</span><br><span class="line">		通告路由器：通告路由器</span><br><span class="line">		范围：本区域内</span><br><span class="line">		作用：描述本端链路信息和对端DR接口信息（BMA/NBMA）</span><br><span class="line">			  描述本端接口信息和对端设备信息和所在网段信息</span><br></pre></td></tr></table></figure>
+
+<p>用来构建区域内拓扑</p>
+<h4 id="为什么需要二类LSA"><a href="#为什么需要二类LSA" class="headerlink" title="为什么需要二类LSA?"></a>为什么需要二类LSA?</h4><p>​    在一类LSA中没有描述DRother和DR之间所在网络和区域内所在路由器的个数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看二类LSA： display ospf lsdb network</span><br></pre></td></tr></table></figure>
+
+<h3 id="二类LSA"><a href="#二类LSA" class="headerlink" title="二类LSA"></a>二类LSA</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">二类LSA：NETwork--LSA---网路LSA</span><br><span class="line">		LSID：DR接口IP</span><br><span class="line">		通告路由器：DR路由器</span><br><span class="line">		范围：本区域内</span><br><span class="line">作用：描述了某网络中路由器的集合</span><br></pre></td></tr></table></figure>
+
+<p><strong>一类LSA和二类LSA共同描述了区域内的拓扑</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dis ospf lsdb summary</span><br></pre></td></tr></table></figure>
+
+<h3 id="三类LSA"><a href="#三类LSA" class="headerlink" title="三类LSA"></a>三类LSA</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">三类：LSA：network-summary-LSA：网络汇总LSA</span><br><span class="line">	 LSID：区域外某网络号</span><br><span class="line">	 通告路由器：ABR路由</span><br><span class="line">	 范围：区域间</span><br><span class="line">	 作用：描述了区域外某条路由信息</span><br><span class="line">	 特性：具有距离矢量特性</span><br><span class="line">	 缺点：导致LSDB增大</span><br><span class="line">	 三类聚合：CIDR（需要被聚合网段所属区域）</span><br><span class="line">【R3-ospf-area 0.0.0.0】abr-summary 172.16.0.0 255.255.252.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>三类构建域间拓扑</strong></p>
+<h3 id="四类LSA"><a href="#四类LSA" class="headerlink" title="四类LSA"></a>四类LSA</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">四类LSA：ASBR-summary-LSA： ABR汇总LSA</span><br><span class="line">		LSID：ASBR的router-id</span><br><span class="line">		通告路由器：ABR</span><br><span class="line">作用：描述ASBR的作用</span><br></pre></td></tr></table></figure>
+
+<h3 id="五类LSA"><a href="#五类LSA" class="headerlink" title="五类LSA"></a>五类LSA</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">五类构建AS外拓扑</span><br><span class="line">	OSPF环路假设：？？？</span><br><span class="line">	外部度量计算类型：</span><br><span class="line">	E type 1：内部度量+外部度量</span><br><span class="line">	E type 2：外部度量</span><br><span class="line">	1 优于 2</span><br><span class="line">修改外部度量计算类型？</span><br><span class="line">【r4-ospf-1】import-route rip type 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="ABR"><a href="#ABR" class="headerlink" title="ABR"></a>ABR</h3><h4 id="ABR——区域间路由器，区域边界路由器"><a href="#ABR——区域间路由器，区域边界路由器" class="headerlink" title="ABR——区域间路由器，区域边界路由器"></a>ABR——区域间路由器，区域边界路由器</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1）定义：连接了多个区域，并且有一个活动的接口处理骨干区域的路由，即为ABR。</span><br><span class="line">2）表示方式：ABR会在自身产生的一类LSA中，表明自己是一台ABR</span><br></pre></td></tr></table></figure>
+
+<h3 id="ABR的作用："><a href="#ABR的作用：" class="headerlink" title="ABR的作用："></a>ABR的作用：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）将直连区域内的1类和2类LSA，转换成3类LSA，传递至其他区域。</span><br><span class="line"></span><br><span class="line">2）将骨干区域内的3类LSA，转换成非骨干区域内的3类LSA。</span><br></pre></td></tr></table></figure>
+
+<h3 id="区域间"><a href="#区域间" class="headerlink" title="区域间"></a>区域间</h3><h4 id="区域间的路由计算："><a href="#区域间的路由计算：" class="headerlink" title="区域间的路由计算："></a>区域间的路由计算：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1）路由条目如何计算：通过3类LSA携带的LSID+Net mask计算出网络号和掩码信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="区域间路由防环原则"><a href="#区域间路由防环原则" class="headerlink" title="区域间路由防环原则"></a>区域间路由防环原则</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）定义ABR设备，且定义了区域间路由的转换只能由ABR完成，而ABR是连接到骨干区域的，所以在OSPF区域设计，要保证非骨干区域与骨干区域相连。</span><br><span class="line">2）ABR永远不计算非骨干区域的三类LSA，即不加入路由表。</span><br><span class="line">3）非骨干区域有三类LSA，骨干区域肯定也有这条LSA。</span><br></pre></td></tr></table></figure>
+
+<h3 id="虚拟链路"><a href="#虚拟链路" class="headerlink" title="虚拟链路"></a>虚拟链路</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1）虚链路属于区域0的逻辑链路</span><br><span class="line">2）虚链路不能穿越特殊区域</span><br><span class="line">3）虚链路只能穿越一个常规的非骨干区域</span><br><span class="line">4）区域0做了认证，由于虚链路属于0，也会启用认证</span><br></pre></td></tr></table></figure>
+
+<h3 id="OSPF汇总"><a href="#OSPF汇总" class="headerlink" title="OSPF汇总"></a>OSPF汇总</h3><p>1、在ABR上针对一个区域内的1类、2类LSA路由进行汇总</p>
+<p>2、汇总路由的cost，继承明细路由中最大的cost值</p>
+<p>3、明细路由出现震荡，汇总路由不会产生影响，只有当所有明细路由失效之后，汇总路由才会失效。</p>
+<p>4、如果有两个ABR，需要在两个ABR上进行汇总</p>
+<p>5、汇总中的防环：即ABR在一个区域内产生的一条3类LSA之后，如果在该区域也收到了其他ABR产生的相同3类，则不会计算该3类LSA。</p>
+<p>6、在ASBR上针对自身产生的外部路由进行汇总</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">睿</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/">http://example.com/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">睿的小屋子</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%A5%E6%AD%BB%E7%9A%84OSOF%E5%8D%8F%E8%AE%AE/">-该死的OSOF协议</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/"><img class="prev-cover" src="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">信息收集-架构-搭建-WAF等</div></div></a></div><div class="next-post pull-right"><a href="/2022/09/28/hello-world/"><img class="next-cover" src="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.dtstatic.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620224412_yhzfu.thumb.1000_0.jpg&amp;refer=http%3A%2F%2Fc-ssl.dtstatic.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1667012047&amp;t=35fc6a9e601a1c56b9ea28d8cbc41b7f" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">睿</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://www.cnblogs.com/green-apple/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://w.4rxb.com/s/0mocsj" target="_blank" title=""><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:293141220@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#OSPF%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text">OSPF协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF%E6%9C%89%E5%87%A0%E7%A7%8D%E6%8A%A5%E6%96%87%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">OSPF有几种报文？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hello%E6%8A%A5%E6%96%87"><span class="toc-number">1.2.</span> <span class="toc-text">Hello报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DR%E4%B8%8EBDR%E9%80%89%E4%B8%BE%E5%8E%9F%E5%88%99"><span class="toc-number">1.3.</span> <span class="toc-text">DR与BDR选举原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF%E9%82%BB%E5%B1%85%E5%BB%BA%E7%AB%8B%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">OSPF邻居建立条件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#DD%E6%8A%A5%E6%96%87%E5%8C%85%E6%8B%AC%E6%91%98%E8%A6%81%E4%BF%A1%E6%81%AF%E3%80%82LSA"><span class="toc-number">1.4.0.0.1.</span> <span class="toc-text">DD报文包括摘要信息。LSA</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF%E5%8D%8F%E8%AE%AE%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%8A%A5%E6%96%87%E5%8F%AF%E9%9D%A0%E6%80%A7%E4%BC%A0%E8%BE%93%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">OSPF协议如何保证报文可靠性传输？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF%E7%9A%84%E4%B8%83%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="toc-number">1.6.</span> <span class="toc-text">OSPF的七种状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF-LSDB%E7%9A%84%E4%BA%A4%E4%BA%92%E5%8E%9F%E5%88%99%EF%BC%9A"><span class="toc-number">1.7.</span> <span class="toc-text">OSPF LSDB的交互原则：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%94%AF%E4%B8%80%E7%9A%84LSA%EF%BC%9F"><span class="toc-number">1.8.</span> <span class="toc-text">如何判断唯一的LSA？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E5%92%8C%E5%88%A4%E6%96%ADLSA%E7%9A%84%E6%96%B0%E6%97%A7%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="toc-number">1.9.</span> <span class="toc-text">如和判断LSA的新旧状态？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF%E7%9A%84%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6%E6%9C%89%E4%BF%A9%E7%A7%8D%EF%BC%9A"><span class="toc-number">1.10.</span> <span class="toc-text">OSPF的更新机制有俩种：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF%E7%9A%84%E8%80%81%E5%8C%96%E6%9C%BA%E5%88%B6%EF%BC%9A"><span class="toc-number">1.11.</span> <span class="toc-text">OSPF的老化机制：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF%E5%88%A0%E9%99%A4%E6%9C%BA%E5%88%B6%EF%BC%9A"><span class="toc-number">1.12.</span> <span class="toc-text">OSPF删除机制：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B%EF%BC%9A4-%E7%A7%8D"><span class="toc-number">1.13.</span> <span class="toc-text">OSPF网络类型：4 种</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LSU%E5%92%8CLSACK%E7%9A%84%E5%8F%91%E9%80%81%E5%9C%B0%E5%9D%80%E6%A0%B9%E6%8D%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E8%A7%92%E8%89%B2%E6%9C%89%E6%89%80%E5%8F%98%E5%8C%96"><span class="toc-number">1.14.</span> <span class="toc-text">LSU和LSACK的发送地址根据路由器角色有所变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DR%E5%92%8CBDR%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-number">1.15.</span> <span class="toc-text">DR和BDR的区别：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSPF%E5%9F%9F%E9%97%B4%E8%B7%AF%E7%94%B1%E2%80%94LSA"><span class="toc-number">2.</span> <span class="toc-text">OSPF域间路由—LSA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%B1%BBLSA"><span class="toc-number">2.1.</span> <span class="toc-text">一类LSA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BA%8C%E7%B1%BBLSA"><span class="toc-number">2.1.1.</span> <span class="toc-text">为什么需要二类LSA?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E7%B1%BBLSA"><span class="toc-number">2.2.</span> <span class="toc-text">二类LSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%B1%BBLSA"><span class="toc-number">2.3.</span> <span class="toc-text">三类LSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E7%B1%BBLSA"><span class="toc-number">2.4.</span> <span class="toc-text">四类LSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E7%B1%BBLSA"><span class="toc-number">2.5.</span> <span class="toc-text">五类LSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABR"><span class="toc-number">2.6.</span> <span class="toc-text">ABR</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ABR%E2%80%94%E2%80%94%E5%8C%BA%E5%9F%9F%E9%97%B4%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%8C%E5%8C%BA%E5%9F%9F%E8%BE%B9%E7%95%8C%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-number">2.6.1.</span> <span class="toc-text">ABR——区域间路由器，区域边界路由器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABR%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9A"><span class="toc-number">2.7.</span> <span class="toc-text">ABR的作用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E9%97%B4"><span class="toc-number">2.8.</span> <span class="toc-text">区域间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E9%97%B4%E7%9A%84%E8%B7%AF%E7%94%B1%E8%AE%A1%E7%AE%97%EF%BC%9A"><span class="toc-number">2.8.1.</span> <span class="toc-text">区域间的路由计算：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E9%97%B4%E8%B7%AF%E7%94%B1%E9%98%B2%E7%8E%AF%E5%8E%9F%E5%88%99"><span class="toc-number">2.8.2.</span> <span class="toc-text">区域间路由防环原则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E9%93%BE%E8%B7%AF"><span class="toc-number">2.9.</span> <span class="toc-text">虚拟链路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">2.9.1.</span> <span class="toc-text">特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSPF%E6%B1%87%E6%80%BB"><span class="toc-number">2.10.</span> <span class="toc-text">OSPF汇总</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/" title="信息收集-架构-搭建-WAF等"><img src="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息收集-架构-搭建-WAF等"/></a><div class="content"><a class="title" href="/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/" title="信息收集-架构-搭建-WAF等">信息收集-架构-搭建-WAF等</a><time datetime="2022-10-01T03:06:54.000Z" title="发表于 2022-10-01 11:06:54">2022-10-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/" title="OSPF协议"><img src="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OSPF协议"/></a><div class="content"><a class="title" href="/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/" title="OSPF协议">OSPF协议</a><time datetime="2022-10-01T03:03:30.000Z" title="发表于 2022-10-01 11:03:30">2022-10-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/28/hello-world/" title="Hello World"><img src="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/09/28/hello-world/" title="Hello World">Hello World</a><time datetime="2022-09-28T12:13:07.802Z" title="发表于 2022-09-28 20:13:07">2022-09-28</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 睿</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

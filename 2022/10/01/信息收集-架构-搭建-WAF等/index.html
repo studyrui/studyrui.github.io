@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>信息收集-架构-搭建-WAF等 | 睿的小屋子</title><meta name="keywords" content="WEB源码拓展"><meta name="author" content="睿"><meta name="copyright" content="睿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="信息收集-架构,搭建,WAF等1.CMS识别技术 网站下方的CMS图标  搜索特定的ico文件—hash值与CMS指纹识别库匹配  查看网站的搭建平台  查看网站的开发语言的脚本框架的漏洞—网站的文件路径  分析目录的工作原理—ip和域名的文件结构  搜索特定的URL获取相似站点  查看网站的响应包   2.源码获取技术  搜索引擎搜索   第三方源码站—站长之家，菜鸟源码   淘宝咸鱼   内部">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息收集-架构-搭建-WAF等">
+<meta property="og:url" content="http://example.com/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/index.html">
+<meta property="og:site_name" content="睿的小屋子">
+<meta property="og:description" content="信息收集-架构,搭建,WAF等1.CMS识别技术 网站下方的CMS图标  搜索特定的ico文件—hash值与CMS指纹识别库匹配  查看网站的搭建平台  查看网站的开发语言的脚本框架的漏洞—网站的文件路径  分析目录的工作原理—ip和域名的文件结构  搜索特定的URL获取相似站点  查看网站的响应包   2.源码获取技术  搜索引擎搜索   第三方源码站—站长之家，菜鸟源码   淘宝咸鱼   内部">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png">
+<meta property="article:published_time" content="2022-10-01T03:06:54.000Z">
+<meta property="article:modified_time" content="2022-10-01T03:08:04.455Z">
+<meta property="article:author" content="睿">
+<meta property="article:tag" content="学习记录">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png"><link rel="shortcut icon" href="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.dtstatic.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620224412_yhzfu.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.dtstatic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1667012047&t=35fc6a9e601a1c56b9ea28d8cbc41b7f"><link rel="canonical" href="http://example.com/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-01 11:08:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="睿的小屋子" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.dtstatic.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620224412_yhzfu.thumb.1000_0.jpg&amp;refer=http%3A%2F%2Fc-ssl.dtstatic.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1667012047&amp;t=35fc6a9e601a1c56b9ea28d8cbc41b7f" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">睿的小屋子</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">信息收集-架构-搭建-WAF等</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-01T03:06:54.000Z" title="发表于 2022-10-01 11:06:54">2022-10-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-01T03:08:04.455Z" title="更新于 2022-10-01 11:08:04">2022-10-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="信息收集-架构-搭建-WAF等"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="信息收集-架构-搭建-WAF等"><a href="#信息收集-架构-搭建-WAF等" class="headerlink" title="信息收集-架构,搭建,WAF等"></a>信息收集-架构,搭建,WAF等</h2><h2 id="1-CMS识别技术"><a href="#1-CMS识别技术" class="headerlink" title="1.CMS识别技术"></a>1.CMS识别技术</h2><ol>
+<li><p>网站下方的CMS图标</p>
+</li>
+<li><p>搜索特定的ico文件—hash值与CMS指纹识别库匹配</p>
+</li>
+<li><p>查看网站的搭建平台</p>
+</li>
+<li><p>查看网站的开发语言的脚本框架的漏洞—网站的文件路径</p>
+</li>
+<li><p>分析目录的工作原理—ip和域名的文件结构</p>
+</li>
+<li><p>搜索特定的URL获取相似站点</p>
+</li>
+<li><p>查看网站的响应包</p>
+</li>
+</ol>
+<h2 id="2-源码获取技术"><a href="#2-源码获取技术" class="headerlink" title="2.源码获取技术"></a>2.源码获取技术</h2><ol>
+<li><p> 搜索引擎搜索</p>
+</li>
+<li><p> 第三方源码站—站长之家，菜鸟源码</p>
+</li>
+<li><p> 淘宝咸鱼</p>
+</li>
+<li><p> 内部渠道 </p>
+</li>
+</ol>
+<h2 id="3-架构信息获取"><a href="#3-架构信息获取" class="headerlink" title="3.架构信息获取"></a>3.架构信息获取</h2><p>1．Nmap扫描识别端口和OS的类型</p>
+<p>2．网站区分大小写判断系统</p>
+<p>3．脚本识别数据库—asp+Access；PHP+MySQL；aspx+mssql;jsp+mssql/orcale;Python+mogodb</p>
+<p>4．Os识别数据库—windows才有Access+sqlserver</p>
+<p>5．端口扫描—端口号对应不同的数据库</p>
+<p>6．Nmap扫描第三方平台和软件—phpmyadmin </p>
+<h2 id="4-站点搭建分析"><a href="#4-站点搭建分析" class="headerlink" title="4.站点搭建分析"></a>4.站点搭建分析</h2><h3 id="4-1搭建习惯-目录型站点"><a href="#4-1搭建习惯-目录型站点" class="headerlink" title="4.1搭建习惯-目录型站点"></a>4.1搭建习惯-目录型站点</h3><p>搭建习惯-目录型站点 在站点的层级目录下会存在另一套系统</p>
+<p> 怎么知道网站存在目录：</p>
+<ol>
+<li><p> 目录扫描工具</p>
+</li>
+<li><p> 随意的点击 </p>
+</li>
+</ol>
+<h3 id="4-2搭建习惯-端口类站点"><a href="#4-2搭建习惯-端口类站点" class="headerlink" title="4.2搭建习惯-端口类站点"></a>4.2搭建习惯-端口类站点</h3><p>搭建习惯-端口类站点 不同端口对应不同站点</p>
+<p> 怎么知道网站开放的端口：</p>
+<ul>
+<li>对地址进行端口扫描</li>
+</ul>
+<h3 id="4-3搭建习惯-子域名站点"><a href="#4-3搭建习惯-子域名站点" class="headerlink" title="4.3搭建习惯-子域名站点"></a>4.3搭建习惯-子域名站点</h3><p>搭建习惯-目录型站点 在不同的子域名可能会存在同一服务器上（也可能在不同的服务器上）</p>
+<p> 怎么知道网站的子域名：</p>
+<ul>
+<li>对子域名进行进爆破</li>
+<li>不同的IP重新开始信息收集</li>
+</ul>
+<h3 id="4-4搭建习惯-类似域名站点"><a href="#4-4搭建习惯-类似域名站点" class="headerlink" title="4.4搭建习惯-类似域名站点"></a>4.4搭建习惯-类似域名站点</h3><p>建习惯-类似域名站点 不同的顶级域名可能存在相同的网站不同的IP以及系统</p>
+<p>怎么知道网站的类似站点</p>
+<ul>
+<li>写脚本爆破根域名 </li>
+</ul>
+<h3 id="4-5搭建习惯-旁注-C段站点"><a href="#4-5搭建习惯-旁注-C段站点" class="headerlink" title="4.5搭建习惯-旁注,C段站点"></a>4.5搭建习惯-旁注,C段站点</h3><p>旁注（前提条件：多个站点服务器）：同服务器不同站点，一个域名不行就尝试服务器的另一个域名）； 有一些旁注查询的第三方网站，直接搜，如 <a target="_blank" rel="noopener" href="https://www.webscan.cc/%EF%BC%9B">https://www.webscan.cc/；</a></p>
+<p>C段：同网段不同服务器不同站点，例如一个服务器的某站点IP为192.168.1.101，那么就可以从这入手，拿到同一网段另一个服务器（站点IP假设为192.168.1.103）的权限。</p>
+<h3 id="4-6搭建习惯-搭建软件特征站点"><a href="#4-6搭建习惯-搭建软件特征站点" class="headerlink" title="4.6搭建习惯-搭建软件特征站点"></a>4.6搭建习惯-搭建软件特征站点</h3><p>搭建平台—宝塔，phpStudy，inmap等等，具有安全隐患，如phpStudy上面会有PhpMyAdmin，账号默认登录 </p>
+<p>怎么知道网站的搭建软件</p>
+<ul>
+<li>软件常用数据库与中间件搭配信息</li>
+<li>默认软件端口</li>
+</ul>
+<h2 id="5-WAF防护分析"><a href="#5-WAF防护分析" class="headerlink" title="5. WAF防护分析"></a>5. WAF防护分析</h2><p>Web应用防护系统（也称为：网站应用级入侵防御系统。英文：Web Application Firewall，简称： WAF）用户一般采用防火墙作为安第一道防线。在现实中，Web服务器和应用存在各种安全问题，普通防火墙难以检测和阻断的，由此产生了WAF。—dns域名服务器和路由器之间，分为软件和硬件。</p>
+<p>Web应用防护与防火墙不同，WAF工作在应用层，对来自Web应用程序客户端的各类请求进行内容检测和验证，确保其安全性与合法性，对非法的请求予以实时阻断，从而对各类网站站点进行有效防护。 </p>
+<h3 id="5-1如何快速识别-WAF"><a href="#5-1如何快速识别-WAF" class="headerlink" title="5.1如何快速识别 WAF"></a>5.1如何快速识别 WAF</h3><p>工具识别</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/EnableSecurity/wafw00f">https://github.com/EnableSecurity/wafw00f</a> </p>
+<p>利用浏览器抓包识别</p>
+<p>— X-Powered-By: WAF</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">睿</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/">http://example.com/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">睿的小屋子</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/"><img class="next-cover" src="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">OSPF协议</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.dtstatic.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620224412_yhzfu.thumb.1000_0.jpg&amp;refer=http%3A%2F%2Fc-ssl.dtstatic.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1667012047&amp;t=35fc6a9e601a1c56b9ea28d8cbc41b7f" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">睿</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://www.cnblogs.com/green-apple/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://w.4rxb.com/s/0mocsj" target="_blank" title=""><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:293141220@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89"><span class="toc-number">1.</span> <span class="toc-text">信息收集-架构,搭建,WAF等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-CMS%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF"><span class="toc-number">2.</span> <span class="toc-text">1.CMS识别技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%BA%90%E7%A0%81%E8%8E%B7%E5%8F%96%E6%8A%80%E6%9C%AF"><span class="toc-number">3.</span> <span class="toc-text">2.源码获取技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9E%B6%E6%9E%84%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96"><span class="toc-number">4.</span> <span class="toc-text">3.架构信息获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">4.站点搭建分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E6%90%AD%E5%BB%BA%E4%B9%A0%E6%83%AF-%E7%9B%AE%E5%BD%95%E5%9E%8B%E7%AB%99%E7%82%B9"><span class="toc-number">5.1.</span> <span class="toc-text">4.1搭建习惯-目录型站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E6%90%AD%E5%BB%BA%E4%B9%A0%E6%83%AF-%E7%AB%AF%E5%8F%A3%E7%B1%BB%E7%AB%99%E7%82%B9"><span class="toc-number">5.2.</span> <span class="toc-text">4.2搭建习惯-端口类站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3%E6%90%AD%E5%BB%BA%E4%B9%A0%E6%83%AF-%E5%AD%90%E5%9F%9F%E5%90%8D%E7%AB%99%E7%82%B9"><span class="toc-number">5.3.</span> <span class="toc-text">4.3搭建习惯-子域名站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4%E6%90%AD%E5%BB%BA%E4%B9%A0%E6%83%AF-%E7%B1%BB%E4%BC%BC%E5%9F%9F%E5%90%8D%E7%AB%99%E7%82%B9"><span class="toc-number">5.4.</span> <span class="toc-text">4.4搭建习惯-类似域名站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5%E6%90%AD%E5%BB%BA%E4%B9%A0%E6%83%AF-%E6%97%81%E6%B3%A8-C%E6%AE%B5%E7%AB%99%E7%82%B9"><span class="toc-number">5.5.</span> <span class="toc-text">4.5搭建习惯-旁注,C段站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6%E6%90%AD%E5%BB%BA%E4%B9%A0%E6%83%AF-%E6%90%AD%E5%BB%BA%E8%BD%AF%E4%BB%B6%E7%89%B9%E5%BE%81%E7%AB%99%E7%82%B9"><span class="toc-number">5.6.</span> <span class="toc-text">4.6搭建习惯-搭建软件特征站点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-WAF%E9%98%B2%E6%8A%A4%E5%88%86%E6%9E%90"><span class="toc-number">6.</span> <span class="toc-text">5. WAF防护分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E8%AF%86%E5%88%AB-WAF"><span class="toc-number">6.1.</span> <span class="toc-text">5.1如何快速识别 WAF</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/" title="信息收集-架构-搭建-WAF等"><img src="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息收集-架构-搭建-WAF等"/></a><div class="content"><a class="title" href="/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/" title="信息收集-架构-搭建-WAF等">信息收集-架构-搭建-WAF等</a><time datetime="2022-10-01T03:06:54.000Z" title="发表于 2022-10-01 11:06:54">2022-10-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/" title="OSPF协议"><img src="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OSPF协议"/></a><div class="content"><a class="title" href="/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/" title="OSPF协议">OSPF协议</a><time datetime="2022-10-01T03:03:30.000Z" title="发表于 2022-10-01 11:03:30">2022-10-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/28/hello-world/" title="Hello World"><img src="https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/09/28/hello-world/" title="Hello World">Hello World</a><time datetime="2022-09-28T12:13:07.802Z" title="发表于 2022-09-28 20:13:07">2022-09-28</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2022/09/29/8tBV39UKOG64cRa.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 睿</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
