@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="WEB源码拓展">
+    <meta name="keywords" content="ISIS协议">
     <meta name="description" content="记录一下个人学习笔记">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>信息收集-架构-搭建-WAF等 | Monday</title>
+    <title>ISIS协议 | Monday</title>
     <link rel="icon" type="image/png" href="https://s2.loli.net/2022/10/13/PqVJvnN749IAQ8R.png">
     
 
@@ -229,12 +229,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://image.3001.net/images/20220806/1659747226117.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://s2.loli.net/2022/10/13/h5MD6cUgsT3jzVI.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">信息收集-架构-搭建-WAF等</h1>
+                    <h1 class="description center-align post-title">ISIS协议</h1>
                 </div>
             </div>
         </div>
@@ -283,8 +283,8 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
-                                <span class="chip bg-color">学习记录</span>
+                            <a href="/tags/ISIS%E5%8D%8F%E8%AE%AE%E6%98%AF%E6%9C%80%E5%A5%BD%E7%9A%84/">
+                                <span class="chip bg-color">-ISIS协议是最好的</span>
                             </a>
                         
                     </div>
@@ -299,21 +299,21 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-10-01
+                    2022-10-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-01
+                    2022-10-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    924
+                    763
                 </div>
                 
 
@@ -340,76 +340,82 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="信息收集-架构-搭建-WAF等"><a href="#信息收集-架构-搭建-WAF等" class="headerlink" title="信息收集-架构,搭建,WAF等"></a>信息收集-架构,搭建,WAF等</h2><h2 id="1-CMS识别技术"><a href="#1-CMS识别技术" class="headerlink" title="1.CMS识别技术"></a>1.CMS识别技术</h2><ol>
-<li><p>网站下方的CMS图标</p>
-</li>
-<li><p>搜索特定的ico文件—hash值与CMS指纹识别库匹配</p>
-</li>
-<li><p>查看网站的搭建平台</p>
-</li>
-<li><p>查看网站的开发语言的脚本框架的漏洞—网站的文件路径</p>
-</li>
-<li><p>分析目录的工作原理—ip和域名的文件结构</p>
-</li>
-<li><p>搜索特定的URL获取相似站点</p>
-</li>
-<li><p>查看网站的响应包</p>
-</li>
-</ol>
-<h2 id="2-源码获取技术"><a href="#2-源码获取技术" class="headerlink" title="2.源码获取技术"></a>2.源码获取技术</h2><ol>
-<li><p> 搜索引擎搜索</p>
-</li>
-<li><p> 第三方源码站—站长之家，菜鸟源码</p>
-</li>
-<li><p> 淘宝咸鱼</p>
-</li>
-<li><p> 内部渠道 </p>
-</li>
-</ol>
-<h2 id="3-架构信息获取"><a href="#3-架构信息获取" class="headerlink" title="3.架构信息获取"></a>3.架构信息获取</h2><p>1．Nmap扫描识别端口和OS的类型</p>
-<p>2．网站区分大小写判断系统</p>
-<p>3．脚本识别数据库—asp+Access；PHP+MySQL；aspx+mssql;jsp+mssql/orcale;Python+mogodb</p>
-<p>4．Os识别数据库—windows才有Access+sqlserver</p>
-<p>5．端口扫描—端口号对应不同的数据库</p>
-<p>6．Nmap扫描第三方平台和软件—phpmyadmin </p>
-<h2 id="4-站点搭建分析"><a href="#4-站点搭建分析" class="headerlink" title="4.站点搭建分析"></a>4.站点搭建分析</h2><h3 id="4-1搭建习惯-目录型站点"><a href="#4-1搭建习惯-目录型站点" class="headerlink" title="4.1搭建习惯-目录型站点"></a>4.1搭建习惯-目录型站点</h3><p>搭建习惯-目录型站点 在站点的层级目录下会存在另一套系统</p>
-<p> 怎么知道网站存在目录：</p>
-<ol>
-<li><p> 目录扫描工具</p>
-</li>
-<li><p> 随意的点击 </p>
-</li>
-</ol>
-<h3 id="4-2搭建习惯-端口类站点"><a href="#4-2搭建习惯-端口类站点" class="headerlink" title="4.2搭建习惯-端口类站点"></a>4.2搭建习惯-端口类站点</h3><p>搭建习惯-端口类站点 不同端口对应不同站点</p>
-<p> 怎么知道网站开放的端口：</p>
-<ul>
-<li>对地址进行端口扫描</li>
-</ul>
-<h3 id="4-3搭建习惯-子域名站点"><a href="#4-3搭建习惯-子域名站点" class="headerlink" title="4.3搭建习惯-子域名站点"></a>4.3搭建习惯-子域名站点</h3><p>搭建习惯-目录型站点 在不同的子域名可能会存在同一服务器上（也可能在不同的服务器上）</p>
-<p> 怎么知道网站的子域名：</p>
-<ul>
-<li>对子域名进行进爆破</li>
-<li>不同的IP重新开始信息收集</li>
-</ul>
-<h3 id="4-4搭建习惯-类似域名站点"><a href="#4-4搭建习惯-类似域名站点" class="headerlink" title="4.4搭建习惯-类似域名站点"></a>4.4搭建习惯-类似域名站点</h3><p>建习惯-类似域名站点 不同的顶级域名可能存在相同的网站不同的IP以及系统</p>
-<p>怎么知道网站的类似站点</p>
-<ul>
-<li>写脚本爆破根域名 </li>
-</ul>
-<h3 id="4-5搭建习惯-旁注-C段站点"><a href="#4-5搭建习惯-旁注-C段站点" class="headerlink" title="4.5搭建习惯-旁注,C段站点"></a>4.5搭建习惯-旁注,C段站点</h3><p>旁注（前提条件：多个站点服务器）：同服务器不同站点，一个域名不行就尝试服务器的另一个域名）； 有一些旁注查询的第三方网站，直接搜，如 <a target="_blank" rel="noopener" href="https://www.webscan.cc/%EF%BC%9B">https://www.webscan.cc/；</a></p>
-<p>C段：同网段不同服务器不同站点，例如一个服务器的某站点IP为192.168.1.101，那么就可以从这入手，拿到同一网段另一个服务器（站点IP假设为192.168.1.103）的权限。</p>
-<h3 id="4-6搭建习惯-搭建软件特征站点"><a href="#4-6搭建习惯-搭建软件特征站点" class="headerlink" title="4.6搭建习惯-搭建软件特征站点"></a>4.6搭建习惯-搭建软件特征站点</h3><p>搭建平台—宝塔，phpStudy，inmap等等，具有安全隐患，如phpStudy上面会有PhpMyAdmin，账号默认登录 </p>
-<p>怎么知道网站的搭建软件</p>
-<ul>
-<li>软件常用数据库与中间件搭配信息</li>
-<li>默认软件端口</li>
-</ul>
-<h2 id="5-WAF防护分析"><a href="#5-WAF防护分析" class="headerlink" title="5. WAF防护分析"></a>5. WAF防护分析</h2><p>Web应用防护系统（也称为：网站应用级入侵防御系统。英文：Web Application Firewall，简称： WAF）用户一般采用防火墙作为安第一道防线。在现实中，Web服务器和应用存在各种安全问题，普通防火墙难以检测和阻断的，由此产生了WAF。—dns域名服务器和路由器之间，分为软件和硬件。</p>
-<p>Web应用防护与防火墙不同，WAF工作在应用层，对来自Web应用程序客户端的各类请求进行内容检测和验证，确保其安全性与合法性，对非法的请求予以实时阻断，从而对各类网站站点进行有效防护。 </p>
-<h3 id="5-1如何快速识别-WAF"><a href="#5-1如何快速识别-WAF" class="headerlink" title="5.1如何快速识别 WAF"></a>5.1如何快速识别 WAF</h3><p>工具识别</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/EnableSecurity/wafw00f">https://github.com/EnableSecurity/wafw00f</a> </p>
-<p>利用浏览器抓包识别</p>
-<p>— X-Powered-By: WAF</p>
+                <hr>
+<h1 id="IS-IS"><a href="#IS-IS" class="headerlink" title="IS-IS"></a>IS-IS</h1><h3 id="ISIS与OSPF的区别："><a href="#ISIS与OSPF的区别：" class="headerlink" title="ISIS与OSPF的区别："></a>ISIS与OSPF的区别：</h3><pre><code>1、相同点：都是采用SPF算法。
+2、不同点：IS-IS基于OSI参考模型，OSPF基于TCP/IP参考模型
+    IS-IS用于支持CLNP，OSPF用于支持IP协议
+3、IS-IS是网络层协议，是运行在数据链路层之上
+备注：CLNP无连接的网络服务，类似于TCP/IP模型中的IP协议，都是采用逻辑寻址的网络层协议。
+IS-IS可以运行在CLNP（OSI）协议中，也可以运行在TCP/IP中
+</code></pre>
+<h3 id="动态路由协议划分："><a href="#动态路由协议划分：" class="headerlink" title="动态路由协议划分："></a>动态路由协议划分：</h3><pre><code>按范围分：IGP：内部网关路由协议——RIP、OSPF、IS-IS
+        EGP：外部网关路由协议——BGP
+按特性分：链路状态路由协议：OSPF、IS-IS
+        距离矢量路由协议：RIP、BGP
+</code></pre>
+<h2 id="集成化IS-IS协议"><a href="#集成化IS-IS协议" class="headerlink" title="集成化IS-IS协议"></a>集成化IS-IS协议</h2><h3 id="集成化IS-IS特点："><a href="#集成化IS-IS特点：" class="headerlink" title="集成化IS-IS特点："></a>集成化IS-IS特点：</h3><pre><code>特点：（1）适用于大型网络
+     （2）适用于RPC增量路由算法，收敛速度块
+     （3）报文中带有TLV字段,拓展性很强
+</code></pre>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><pre><code>原理：（1）发送hello报文建立邻居关系
+     （2）运行ISP（链路状态PDU），泛洪形成相同的LSDB
+     （3）运行SPF算法，得出最短路径
+</code></pre>
+<h3 id="地址结构："><a href="#地址结构：" class="headerlink" title="地址结构："></a>地址结构：</h3><pre><code>CLNP：无连接网络协议
+NSAP：网络服务接入点
+NET：网络实体标识符
+</code></pre>
+<p><img src="https://s2.loli.net/2022/10/13/nVYTjfql4EFiuBh.png" alt="地址结构"></p>
+<h3 id="区域"><a href="#区域" class="headerlink" title="区域"></a>区域</h3><pre><code>基于路由器划分
+骨干和非骨干区域按路由器级别划分
+level-1（非骨干区域）    level-2（骨干区域）
+level-1-2（默认类型，能同时创建level-1和level-2的LSDB）
+</code></pre>
+<h3 id="邻居关系"><a href="#邻居关系" class="headerlink" title="邻居关系"></a>邻居关系</h3><pre><code>level-1和level-1是level-1邻居关系
+level-1和level-1-2是level-1邻居关系
+level-1-2和level-2是level-2邻居关系
+level-2和level-2是level-2邻居关系
+</code></pre>
+<p>通信原则：</p>
+<pre><code>以下level简写为l-1等
+（1）L-1-2路由器会产生ATT位为&quot;1&quot;的KSP，L-1路由器收到后会产生下一跳指向L-1-2路由器的缺省路由。
+（2）L-1-2路由器会把自己所在区域的明细路由挂在L-2级别的LSP上传递给L-2路由器，L-2路由器就会到非骨干区域的路由。
+</code></pre>
+<h3 id="网络类型"><a href="#网络类型" class="headerlink" title="网络类型"></a>网络类型</h3><pre><code>P2P:IIH（is-is hello消息）
+MA：
+    level-1组播更新（mac0180-c200-0014）
+    Level-2组播更新（mac0180-c200-0015）
+修改网络类型：【r2-接口】isis circuit-type p2p
+</code></pre>
+<h3 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h3><pre><code>hello：建立维护邻居关系
+LSP：链路状态PDU：交换链路状态信息（LSU：LSA）
+CSNP：全序列号PDU：描述链路状态信息（DD）
+PSNP：部分序列号PDU：请求个确认链路状态信息（LSR，LSACK）
+</code></pre>
+<p><img src="https://s2.loli.net/2022/10/13/ov4MzBuyk3gaIrb.png" alt="邻居关系的建立"></p>
+<p>配置</p>
+<pre><code>进入IS-IS：
+【R1】isis
+配置实体网络：
+【R1-isis-1】network-entity 49.0001.0000.0000.0001.00
+配置路由器级别：
+【R1-isis-1】is-level-1
+接口开启ISIS：
+【进入接口】isis enable
+查看ISIS邻居关系：
+display isis peer
+ISIS骨干区域向骨干区域渗透：
+【r2-isis-1】import-route isis level-2 into level-1
+</code></pre>
+<h3 id="开销"><a href="#开销" class="headerlink" title="开销"></a>开销</h3><p>分为：narrow：窄模式</p>
+<pre><code>        wide：宽模式
+</code></pre>
+<pre><code>修改开销模式：
+【R1-isis-1】cost-style&#123;narrow|wide&#125;
+修改开销：
+窄模式：【r1-接口】isis cost&lt;1-63&gt;（最大60）
+宽模式：【r1-接口】isis cost&lt;1-16777215&gt;
+</code></pre>
 
                 
             </div>
@@ -436,7 +442,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/">http://example.com/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/</a>
+                    <a href="http://example.com/2022/10/13/ISIS%E5%8D%8F%E8%AE%AE/">http://example.com/2022/10/13/ISIS%E5%8D%8F%E8%AE%AE/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -474,8 +480,8 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
-                                    <span class="chip bg-color">学习记录</span>
+                                <a href="/tags/ISIS%E5%8D%8F%E8%AE%AE%E6%98%AF%E6%9C%80%E5%A5%BD%E7%9A%84/">
+                                    <span class="chip bg-color">-ISIS协议是最好的</span>
                                 </a>
                             
                         </div>
@@ -554,9 +560,10 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/10/13/ISIS%E5%8D%8F%E8%AE%AE/">
                     <div class="card-image">
@@ -573,9 +580,9 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -584,6 +591,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -602,12 +610,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/">
+                <a href="/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/">
                     <div class="card-image">
                         
-                        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftxt22262.book118.com%2F2017%2F0702%2Fbook32759%2F32758487.jpg&refer=http%3A%2F%2Ftxt22262.book118.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1668160017&t=68675dbcb12c40d8955a95ae9e3b95c6" class="responsive-img" alt="OSPF协议">
+                        <img src="https://image.3001.net/images/20220806/1659747226117.jpg" class="responsive-img" alt="信息收集-架构-搭建-WAF等">
                         
-                        <span class="card-title">OSPF协议</span>
+                        <span class="card-title">信息收集-架构-搭建-WAF等</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -631,8 +639,8 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AF%A5%E6%AD%BB%E7%9A%84OSOF%E5%8D%8F%E8%AE%AE/">
-                        <span class="chip bg-color">-该死的OSOF协议</span>
+                    <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+                        <span class="chip bg-color">学习记录</span>
                     </a>
                     
                 </div>

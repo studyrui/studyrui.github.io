@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-01T03:08:04.455Z</updated>
+  <updated>2022-10-13T09:22:55.726Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ISIS协议</title>
+    <link href="http://example.com/2022/10/13/ISIS%E5%8D%8F%E8%AE%AE/"/>
+    <id>http://example.com/2022/10/13/ISIS%E5%8D%8F%E8%AE%AE/</id>
+    <published>2022-10-13T09:21:23.000Z</published>
+    <updated>2022-10-13T09:22:55.726Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h1 id="IS-IS"><a href="#IS-IS" class="headerlink" title="IS-IS"></a>IS-IS</h1><h3 id="ISIS与OSPF的区别："><a href="#ISIS与OSPF的区别：" class="headerlink" title="ISIS与OSPF的区别："></a>ISIS与OSPF的区别：</h3><pre><code>1、相同点：都是采用SPF算法。2、不同点：IS-IS基于OSI参考模型，OSPF基于TCP/IP参考模型    IS-IS用于支持CLNP，OSPF用于支持IP协议3、IS-IS是网络层协议，是运行在数据链路层之上备注：CLNP无连接的网络服务，类似于TCP/IP模型中的IP协议，都是采用逻辑寻址的网络层协议。IS-IS可以运行在CLNP（OSI）协议中，也可以运行在TCP/IP中</code></pre><h3 id="动态路由协议划分："><a href="#动态路由协议划分：" class="headerlink" title="动态路由协议划分："></a>动态路由协议划分：</h3><pre><code>按范围分：IGP：内部网关路由协议——RIP、OSPF、IS-IS        EGP：外部网关路由协议——BGP按特性分：链路状态路由协议：OSPF、IS-IS        距离矢量路由协议：RIP、BGP</code></pre><h2 id="集成化IS-IS协议"><a href="#集成化IS-IS协议" class="headerlink" title="集成化IS-IS协议"></a>集成化IS-IS协议</h2><h3 id="集成化IS-IS特点："><a href="#集成化IS-IS特点：" class="headerlink" title="集成化IS-IS特点："></a>集成化IS-IS特点：</h3><pre><code>特点：（1）适用于大型网络     （2）适用于RPC增量路由算法，收敛速度块     （3）报文中带有TLV字段,拓展性很强</code></pre><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><pre><code>原理：（1）发送hello报文建立邻居关系     （2）运行ISP（链路状态PDU），泛洪形成相同的LSDB     （3）运行SPF算法，得出最短路径</code></pre><h3 id="地址结构："><a href="#地址结构：" class="headerlink" title="地址结构："></a>地址结构：</h3><pre><code>CLNP：无连接网络协议NSAP：网络服务接入点NET：网络实体标识符</code></pre><p><img src="https://s2.loli.net/2022/10/13/nVYTjfql4EFiuBh.png" alt="地址结构"></p><h3 id="区域"><a href="#区域" class="headerlink" title="区域"></a>区域</h3><pre><code>基于路由器划分骨干和非骨干区域按路由器级别划分level-1（非骨干区域）    level-2（骨干区域）level-1-2（默认类型，能同时创建level-1和level-2的LSDB）</code></pre><h3 id="邻居关系"><a href="#邻居关系" class="headerlink" title="邻居关系"></a>邻居关系</h3><pre><code>level-1和level-1是level-1邻居关系level-1和level-1-2是level-1邻居关系level-1-2和level-2是level-2邻居关系level-2和level-2是level-2邻居关系</code></pre><p>通信原则：</p><pre><code>以下level简写为l-1等（1）L-1-2路由器会产生ATT位为&quot;1&quot;的KSP，L-1路由器收到后会产生下一跳指向L-1-2路由器的缺省路由。（2）L-1-2路由器会把自己所在区域的明细路由挂在L-2级别的LSP上传递给L-2路由器，L-2路由器就会到非骨干区域的路由。</code></pre><h3 id="网络类型"><a href="#网络类型" class="headerlink" title="网络类型"></a>网络类型</h3><pre><code>P2P:IIH（is-is hello消息）MA：    level-1组播更新（mac0180-c200-0014）    Level-2组播更新（mac0180-c200-0015）修改网络类型：【r2-接口】isis circuit-type p2p</code></pre><h3 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h3><pre><code>hello：建立维护邻居关系LSP：链路状态PDU：交换链路状态信息（LSU：LSA）CSNP：全序列号PDU：描述链路状态信息（DD）PSNP：部分序列号PDU：请求个确认链路状态信息（LSR，LSACK）</code></pre><p><img src="https://s2.loli.net/2022/10/13/ov4MzBuyk3gaIrb.png" alt="邻居关系的建立"></p><p>配置</p><pre><code>进入IS-IS：【R1】isis配置实体网络：【R1-isis-1】network-entity 49.0001.0000.0000.0001.00配置路由器级别：【R1-isis-1】is-level-1接口开启ISIS：【进入接口】isis enable查看ISIS邻居关系：display isis peerISIS骨干区域向骨干区域渗透：【r2-isis-1】import-route isis level-2 into level-1</code></pre><h3 id="开销"><a href="#开销" class="headerlink" title="开销"></a>开销</h3><p>分为：narrow：窄模式</p><pre><code>        wide：宽模式</code></pre><pre><code>修改开销模式：【R1-isis-1】cost-style&#123;narrow|wide&#125;修改开销：窄模式：【r1-接口】isis cost&lt;1-63&gt;（最大60）宽模式：【r1-接口】isis cost&lt;1-16777215&gt;</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;hr&gt;
+&lt;h1 id=&quot;IS-IS&quot;&gt;&lt;a href=&quot;#IS-IS&quot; class=&quot;headerlink&quot; title=&quot;IS-IS&quot;&gt;&lt;/a&gt;IS-IS&lt;/h1&gt;&lt;h3 id=&quot;ISIS与OSPF的区别：&quot;&gt;&lt;a href=&quot;#ISIS与OSPF的区别：&quot; class=&quot;h</summary>
+      
+    
+    
+    
+    
+    <category term="-ISIS协议是最好的" scheme="http://example.com/tags/ISIS%E5%8D%8F%E8%AE%AE%E6%98%AF%E6%9C%80%E5%A5%BD%E7%9A%84/"/>
+    
+  </entry>
   
   <entry>
     <title>信息收集-架构-搭建-WAF等</title>
