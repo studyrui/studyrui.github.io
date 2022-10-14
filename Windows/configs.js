@@ -20,7 +20,7 @@ YL.static = {
   beforeOnloadEnable: true,//启用关闭前询问（打包app时请关闭防止出错）
   WarningPerformanceInIE: true,//在IE下提示体验不佳信息
   languages: {}, //推荐留空，自动从文件加载
-  changeable: true,//存档数据是否可被普通用户修改
+  changeable: false,//存档数据是否可被普通用户修改
   dataCenter: true,//是否展示数据管理中心
 
   /**————————————————————————————————————————————————————————————————————————————————————————————*/
