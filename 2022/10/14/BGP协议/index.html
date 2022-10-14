@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="该死的OSPF">
-    <meta name="description" content="记录一下个人学习笔记">
+    <meta name="keywords" content="BGP协议">
+    <meta name="description" content="是BGP协议">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>OSPF协议 | Monday</title>
+    <title>BGP协议 | Monday</title>
     <link rel="icon" type="image/png" href="https://s2.loli.net/2022/10/13/PqVJvnN749IAQ8R.png">
     
 
@@ -249,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftxt22262.book118.com%2F2017%2F0702%2Fbook32759%2F32758487.jpg&refer=http%3A%2F%2Ftxt22262.book118.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1668160017&t=68675dbcb12c40d8955a95ae9e3b95c6')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.wljslmz.cn%2Fwljslmzcn%2F202206151148413.png&refer=http%3A%2F%2Fimg.wljslmz.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1668307893&t=9e1f2079249cd6c145d908a567c73ebf')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">OSPF协议</h1>
+                    <h1 class="description center-align post-title">BGP协议</h1>
                 </div>
             </div>
         </div>
@@ -303,8 +303,8 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AF%A5%E6%AD%BB%E7%9A%84OSOF%E5%8D%8F%E8%AE%AE/">
-                                <span class="chip bg-color">-该死的OSOF协议</span>
+                            <a href="/tags/%E5%A5%BD%E9%9A%BE%E8%AE%B0%E7%9A%84%E5%8D%8F%E8%AE%AE/">
+                                <span class="chip bg-color">-好难记的协议</span>
                             </a>
                         
                     </div>
@@ -319,28 +319,28 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-10-01
+                    2022-10-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-12
+                    2022-10-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    7 分
                 </div>
                 
 
@@ -360,269 +360,224 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="OSPF协议"><a href="#OSPF协议" class="headerlink" title="OSPF协议"></a>OSPF协议</h2><h3 id="OSPF有几种报文？"><a href="#OSPF有几种报文？" class="headerlink" title="OSPF有几种报文？"></a>OSPF有几种报文？</h3><pre><code>1、hello，用于协商维持建立OSPF邻居
-
-2、DD报文，用于交互LSA的摘要信息
-
-3、LSR报文，用于请求一条LSA
-
-4、LSU报文，用于发送LSA的详细信息
-
-5、LSACK，用于对接收到的LSA进行确认
+                <h1 id="BGP协议"><a href="#BGP协议" class="headerlink" title="BGP协议"></a>BGP协议</h1><h3 id="BGP"><a href="#BGP" class="headerlink" title="BGP"></a>BGP</h3><pre><code>BGP：边界网关路由协议（距离矢量）
+    AS：自治区域系统：一个路由器管理域的集合
+    范围：16bit（0-65535）——&gt;向32bit过渡
+    私有：49151-65535
+    基于TCP封装----179
 </code></pre>
-<h3 id="Hello报文"><a href="#Hello报文" class="headerlink" title="Hello报文"></a>Hello报文</h3><pre><code>version，描述版本号
-message Type 协议报文类型
-source ospf router，描述发送该hello报文的路由器ID
-area ID,描述发送该报文的接口在哪个区域
-checksum 校验和，用于保证保证报文的完整性
-auth Type 认证类型，Null
-auth data 认证数据
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><pre><code>1、建立邻居关系：
+    手工建立TCP可达。可以域不相邻的路由器直接建立邻居关系（节约中间设备的资源）先启动BGP的一段发起TCP连接，RTB先启动BGP协议，RTB使用随机端口号向RTA的179端口发起TCP连接。
+2、传递路由
 </code></pre>
-<h3 id="DR与BDR选举原则"><a href="#DR与BDR选举原则" class="headerlink" title="DR与BDR选举原则"></a>DR与BDR选举原则</h3><pre><code>1、优先级，默认1，越大越优先
-2、当优先级一致，比较接口地址大的为DR
-3、DR优先级为0，则不参与DR与BDR的选举
-4、DR与BDR选举完成，不允许被强占
+<h3 id="邻居关系"><a href="#邻居关系" class="headerlink" title="邻居关系"></a>邻居关系</h3><pre><code>EBGP：AS间
+IBGP：AS内（区分TCP路由协议，只为了传递BGP路由信息）
 </code></pre>
-<h3 id="OSPF邻居建立条件"><a href="#OSPF邻居建立条件" class="headerlink" title="OSPF邻居建立条件"></a>OSPF邻居建立条件</h3><pre><code>1、版本一致
-2、Router ID不能冲突
-3、区域ID一致
-4、认证类型和密码一致
-5、俩端IP需要在同一网段（掩码相同）
-6、hello报文发送间隔时间一致
-7、dead时间一致
-8、option字段中N和E一致
-9、俩段MTU的接口一致
+<h3 id="BGP特点"><a href="#BGP特点" class="headerlink" title="BGP特点"></a>BGP特点</h3><pre><code>BGP特点：
+1、保证可靠传输
+2、增量更新（只更新新的路由减少带宽占用）
+3、增强型距离矢量路由协议（无环路）
+4、注重路径选路和路由选择
 </code></pre>
-<h6 id="DD报文包括摘要信息。LSA"><a href="#DD报文包括摘要信息。LSA" class="headerlink" title="DD报文包括摘要信息。LSA"></a>DD报文包括摘要信息。LSA</h6><p>OSPF涉及到五种报文，7个状态</p>
-<h3 id="OSPF协议如何保证报文可靠性传输？"><a href="#OSPF协议如何保证报文可靠性传输？" class="headerlink" title="OSPF协议如何保证报文可靠性传输？"></a>OSPF协议如何保证报文可靠性传输？</h3><pre><code>1、邻居建立的三次握手
-2、重传机制
-3、LSR、LSU和LSACK显示确认机制，DD报文的隐式确认
+<h3 id="BGP配置"><a href="#BGP配置" class="headerlink" title="BGP配置"></a>BGP配置</h3><h4 id="BGP配置-1"><a href="#BGP配置-1" class="headerlink" title="BGP配置"></a>BGP配置</h4><pre><code>1、测试TCP是否可达
+2、开启BGP和指定路由器所属AS：
+    【r1】bgp 100
+3、手工指定邻居关系：
+    【r1-bgp】peer 20.1.1.2 as-number 200（地址自己更改）
+4、宣告网段：
+    【r1-bgp】network 网段/掩码
+采用LOOPback接口建立邻居关系
+5、修改更新源接口：
+    【r1-bgp】peer looback connect-interface loopback 1
+6、修改吓一跳
+    【r1-bgp】peer 3.0.0.3 next-hop-local
 </code></pre>
-<p>发送空的DD报文，目的是为了主从选举，按需同步。</p>
-<h3 id="OSPF的七种状态"><a href="#OSPF的七种状态" class="headerlink" title="OSPF的七种状态"></a>OSPF的七种状态</h3><pre><code>down——代表osf没有发现任何OSPF邻居
-init——代表发现OSPF邻居
-2-way——收到OSPF邻居的hello报文，并发现对方的active-neighbor有自身的router-id
-Exstart——用于发送空的DD报文，互相进行主从选举
-Exchange——当确定主从关系后，进入到exchange状态发送带有LSA摘要信息的DD报文
-Loading——当收到对方的DD报文后，同时发现M=0，将会进入到loading状态请求自身没有的LSA
-Full——当自身请求列表中，所有接收的LSA，对方都发送过来之后，将会进入到Full状态
+<p><img src="https://s2.loli.net/2022/10/14/Ccm1ixpSlOe54rj.png" alt="BGP拓扑"></p>
+<h3 id="BGP报文"><a href="#BGP报文" class="headerlink" title="BGP报文"></a>BGP报文</h3><pre><code>Update message：更新路由
+    Path attributes：路径属性（BGP属性）
+    Network layer reachability information：需要更新的路由
+Open message：建立邻居关系
+    My AS :本地AS
+    收到的AS必须与peer的as相同
+    Hold time:抑制时间（邻居死亡时间）
+        需要协商：按最小时间
+        修改时间：【r1-bgp】peer 12.1.1.2 timer keeplive 30 hold 90
+    BGP id：BGP router-id  必须唯一
+    Optional parameter：选项
+Keeplive message：维护邻居关系
+        每隔60s发送一次消息180s收不到认为邻居不存在
+Notification message：通过错误信息
+    Error code：错误代码（指明错误报文）
+    rror subcode：错误子代码（指明错误字段）
+Refresh message：刷新路由
 </code></pre>
-<h3 id="OSPF-LSDB的交互原则："><a href="#OSPF-LSDB的交互原则：" class="headerlink" title="OSPF LSDB的交互原则："></a>OSPF LSDB的交互原则：</h3><pre><code>1、互相交互自身没有的LSA
-2、以及使用新的LSA，替换掉旧的LSA
+<h3 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h3><p><img src="https://s2.loli.net/2022/10/14/ZkfrpRLgoPeMyFq.png" alt="邻居关系建立"></p>
+<p>六种状态</p>
+<pre><code>1、idle：初始状态开始进行TCP连接到connect状态
+2、connect：TCP连接成功进入到oppen-sent状态
+           TCP连接失败进入actice状态
+3、active：重置TCP连接
+          连接成功进入open-sent
+          连接失败返回idle状态
+4、open-sent：接收open消息进行邻居建立的协商
+          协商成功发送keeplive消息进入open-confirm
+          协商失败发送notification消息返回idle状态
+5、open-confirm：收到notification消息返回idle状态
+                收到keeplive消息进入establish状态
+6、establish：发送update更新报文
 </code></pre>
-<h3 id="如何判断唯一的LSA？"><a href="#如何判断唯一的LSA？" class="headerlink" title="如何判断唯一的LSA？"></a>如何判断唯一的LSA？</h3><pre><code>LSA的三要素：
-    1、LSA类型（type）
-    2、LSA的ID（链路状态ID） link State ID
-    3、LSA的通告者 adv router
+<h3 id="路由通告原则"><a href="#路由通告原则" class="headerlink" title="路由通告原则"></a>路由通告原则</h3><pre><code>1、下一跳不改变原则：
+    从EBGP邻居收到的路由传给IBGP邻居时下一跳不改变
+2、IBGP水平分割：
+    从IBGP邻居收到的路由不会传递给IBGP邻居
+3、同步原则：
+    从EBGP邻居收到的路由传递给IBGP时邻居时必须保证该路由
+    能从IBGP协议中学到（默认关闭）
 </code></pre>
-<h3 id="如和判断LSA的新旧状态？"><a href="#如和判断LSA的新旧状态？" class="headerlink" title="如和判断LSA的新旧状态？"></a>如和判断LSA的新旧状态？</h3><pre><code>1、首先比较LSA的序列号，初始0x80000001每次OSPF更新，都会+1
-2、序列号相同，则比较检验和，值越大越优先
-3、当检验和相同，则比较LSA的age时间
-    （1）首先age=3600s的LSA，用于删除一条LSA
-    （2）如果俩条LSA的age时间相差大于900s，将会选中age数值小的LSA。
-    （3）如果俩条LSa的age时间小于900s，将会认为相同，保持原有不变。
-</code></pre>
-<p>每个OSPF路由器，都会用一类LSA描述自身所有启用的OSPF的接口</p>
-<h3 id="OSPF的更新机制有俩种："><a href="#OSPF的更新机制有俩种：" class="headerlink" title="OSPF的更新机制有俩种："></a>OSPF的更新机制有俩种：</h3><pre><code>1、触发更新，当链路状态发生改变之后，OSPF将会触发更新，比如网段掩码变了，取消宣告
-2、周期更新，每个OSPF路由器自身产生的LSA都会间隔30分钟周期更新一次
-</code></pre>
-<h3 id="OSPF的老化机制："><a href="#OSPF的老化机制：" class="headerlink" title="OSPF的老化机制："></a>OSPF的老化机制：</h3><pre><code>OSPF路由器每产生一条LSA，都会在一个age时间为3600s，初始值为1，当age时间递增到3600s之后，将会认为LSA老化，从自身LSDB中删除。
-</code></pre>
-<h3 id="OSPF删除机制："><a href="#OSPF删除机制：" class="headerlink" title="OSPF删除机制："></a>OSPF删除机制：</h3><pre><code>当OSPF需要删除一条LSA的时候，将会把LSA的age时间变化为3600s，当其他的路由器收到该LSA之后，将会把自身LSDB中对应的LSA删除。
-</code></pre>
-<p><img src="https://s2.loli.net/2022/10/12/WcV24Hm1EDdGTJ8.png" alt="未命名图片"></p>
-<h3 id="OSPF网络类型：4-种"><a href="#OSPF网络类型：4-种" class="headerlink" title="OSPF网络类型：4 种"></a>OSPF网络类型：4 种</h3><pre><code>1、P2P：链路层协议是PPP，HDLC，默认是P2P
-2、P2MP（点到多点）DS-VPN，DM-VPN
-    hello报文是组播形式224.0.0.5，其余报文（DD，LSR，LSU，LSACK）为单播
-3、Broadcast广播类型：组播224.0..5
-4、MA
-5、NBMA，没有广播和组播功能的环境，以单播发送报文。
-</code></pre>
-<p>BMA 广播多路访问—————-&gt;—-以太网（共享式）—–双绞线</p>
-<p>网络类型</p>
-<p>BMA 广播多路访问—————-&gt;—-以太网（共享式）—–双绞线</p>
-<table>
+<h4 id="BGP路由表"><a href="#BGP路由表" class="headerlink" title="BGP路由表"></a>BGP路由表</h4><table>
 <thead>
 <tr>
-<th>生存时间=10</th>
-<th>死亡时间=40</th>
-<th>子网掩码是否协商：是</th>
-<th>需不需要选举DR/BDR：需要</th>
-<th>邻居</th>
+<th>*–valid：可用的网络——-&gt;</th>
+<th>IP路由表</th>
 </tr>
 </thead>
 <tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>&gt;——best：最优的路由—&gt;</td>
+<td>IP路由表</td>
 </tr>
 </tbody></table>
-<p>NBMA 非广播多路访问———-&gt;——全互联FR（帧中继）—串行电缆</p>
-<table>
-<thead>
-<tr>
-<th>生存时间=30</th>
-<th>死亡时间=120</th>
-<th>子网掩码是否协商：是</th>
-<th>需不需要选举DR/BDR：需要</th>
-<th>邻居</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>P2P 点到点——————–&gt;——-ppp/HDLC————–串行电缆</p>
-<table>
-<thead>
-<tr>
-<th>生存时间=10</th>
-<th>死亡时间=40</th>
-<th>子网掩码是否协商：否</th>
-<th>需不需要选举DR/BDR：不需要</th>
-<th>邻接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>P2MP 点到多点————–&gt;——–非全互联FR—————串行电缆</p>
-<table>
-<thead>
-<tr>
-<th>生存时间=30</th>
-<th>死亡时间=120</th>
-<th>子网掩码是否协商：是</th>
-<th>需不需要选举DR/BDR：不需要</th>
-<th>邻接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>Virtual 虚拟网络 ———–&gt;———-vlink———————-双绞线</p>
-<table>
-<thead>
-<tr>
-<th>生存时间=10</th>
-<th>死亡时间=40</th>
-<th>子网掩码是否协商：否</th>
-<th>需不需要选举DR/BDR：不需要</th>
-<th>邻接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>当一个区域内地俩台路由器，一端是P2P另一端是BMA，邻居关系可以建立，邻接关系可以起来，但是不会传路由</p>
-<h3 id="LSU和LSACK的发送地址根据路由器角色有所变化"><a href="#LSU和LSACK的发送地址根据路由器角色有所变化" class="headerlink" title="LSU和LSACK的发送地址根据路由器角色有所变化"></a>LSU和LSACK的发送地址根据路由器角色有所变化</h3><pre><code>1）DRother--DRother产生的LSU通过224.0.0.6发送给DR和BDR。
+<h3 id="路由黑洞"><a href="#路由黑洞" class="headerlink" title="路由黑洞"></a>路由黑洞</h3><pre><code>有路由但是数据不可达（发生在中转AS）
+</code></pre>
+<p>原因：中专AS的中间路由器没有到俩边AS的路由器</p>
+<p>解决办法：</p>
+<pre><code>1、BGP反射器
+2、BGP联盟
+3、同步原则
+4、BGP全互联
+</code></pre>
+<p><img src="https://s2.loli.net/2022/10/14/4oLn3gyNKGj6wS7.png" alt="路由黑洞"></p>
+<h3 id="BGP属性"><a href="#BGP属性" class="headerlink" title="BGP属性"></a>BGP属性</h3><pre><code>BGP属性：用来控制选路
+公认必遵：所有BGP路由器都可以识别，且必须存在与update消息中，
+        orgin起源     AS-path:经过AS的路径      next-hop
+公认任意：所有BGP路由器都可以识别，不要求必须携带。
+        local-preference：本地优先级；  
+        atomic-aggregate：原子聚合
+可选过度：BGP路由器可以选择是否携带这种属性，如果不识别可以转发给邻居路由器而邻居路由器可能    识别并使用到这种属性。
+        aggregator：聚合者
+        Community：团体
+可选非过渡：BGP路由器可以选择是否携带这种属性，如果不识别将丢弃该种属性。
+        MED：多出口鉴别器
+        Originator：起始者ID
+        cluster-list：簇列表
+</code></pre>
+<h5 id="orgin"><a href="#orgin" class="headerlink" title="orgin"></a>orgin</h5><p>orgin：记录了路由来源</p>
+<pre><code>i-IGP:通过network加入BGP路由表的路由
 
-2）DR通过224.0.0.5发送给其他的DRohter和BDR
-</code></pre>
-<h3 id="DR和BDR的区别："><a href="#DR和BDR的区别：" class="headerlink" title="DR和BDR的区别："></a>DR和BDR的区别：</h3><pre><code>1）DR收到DRother的LSU则泛洪，BDR不进行反馈
+e-EGP：通过EGP协议得到的路由
 
-DR和BDR同时监听224.0.0.5和224.0.0.6
+?-incomplete：弄过引入加入BGP的路由表里的路由
 
-2）DRother不监听224.0.0.6，仅监听224.0.0.5
+比较规则：i&gt;e&gt;?
 </code></pre>
-<p>LSR是以单播进发送</p>
-<h2 id="OSPF域间路由—LSA"><a href="#OSPF域间路由—LSA" class="headerlink" title="OSPF域间路由—LSA"></a>OSPF域间路由—LSA</h2><p>链路类型：</p>
-<p>​    P2P:描述了对端链路信息和本端链路信息</p>
-<p>​    （描述了从一台路由器到另外一台路由器之间点到点的链路信息。用来描述拓扑信息）（P2P P2MP）</p>
-<p>​    transNET：</p>
-<p>​                        描述了从一台路由器需要经过一个transit（BMA/NBMA网络）网络的网段信息。用来描述拓扑信息。 </p>
-<p>​    STUBnet：</p>
-<p>​                        用来描述路由器本端loopback接口信息。用来描述路由信息。</p>
-<h3 id="一类LSA"><a href="#一类LSA" class="headerlink" title="一类LSA"></a>一类LSA</h3><pre><code>一类LSA：router-LSA 路由器-LSA
-        LSID:router-ID
-        通告路由器：通告路由器
-        范围：本区域内
-        作用：描述本端链路信息和对端DR接口信息（BMA/NBMA）
-              描述本端接口信息和对端设备信息和所在网段信息
+<p>作用：通过修改起源进行路由选路</p>
+<p>修改起源：</p>
+<pre><code>1、创建ACL/前缀列表：选取路由
+2、中间route-policy修改属性：
+3、允许所有通过
+5、调用route-policy
+【r2-bgp】peer 4.4.4.4 route-policy jingjing export
 </code></pre>
-<p>用来构建区域内拓扑</p>
-<h4 id="为什么需要二类LSA"><a href="#为什么需要二类LSA" class="headerlink" title="为什么需要二类LSA?"></a>为什么需要二类LSA?</h4><p>​    在一类LSA中没有描述DRother和DR之间所在网络和区域内所在路由器的个数。</p>
-<pre><code>查看二类LSA： display ospf lsdb network
+<p>AS-Path：记录了某条路由经过的AS</p>
+<p>比较规则：AS号数量越小越优先</p>
+<p>作用：1、通过修改AS号个数进行 路由选路</p>
+<pre><code>       2、防止AS间的环路
 </code></pre>
-<h3 id="二类LSA"><a href="#二类LSA" class="headerlink" title="二类LSA"></a>二类LSA</h3><pre><code>二类LSA：NETwork--LSA---网路LSA
-        LSID：DR接口IP
-        通告路由器：DR路由器
-        范围：本区域内
-作用：描述了某网络中路由器的集合
+<p>修改AS-Path：</p>
+<pre><code>1、中间ACL前缀列表：选取路由
+2、中间route-policy：修改属性
+ 【r2-route-policy】apply as-path 300 400 500 additive
+3、允许所有通过
+4、调用route-policy：
+【r2-bgp】peer 4.4.4.4 route-policy huawei export
 </code></pre>
-<p><strong>一类LSA和二类LSA共同描述了区域内的拓扑</strong></p>
-<pre><code>Dis ospf lsdb summary
-</code></pre>
-<h3 id="三类LSA"><a href="#三类LSA" class="headerlink" title="三类LSA"></a>三类LSA</h3><pre><code>三类：LSA：network-summary-LSA：网络汇总LSA
-     LSID：区域外某网络号
-     通告路由器：ABR路由
-     范围：区域间
-     作用：描述了区域外某条路由信息
-     特性：具有距离矢量特性
-     缺点：导致LSDB增大
-     三类聚合：CIDR（需要被聚合网段所属区域）
-【R3-ospf-area 0.0.0.0】abr-summary 172.16.0.0 255.255.252.0
-</code></pre>
-<p><strong>三类构建域间拓扑</strong></p>
-<h3 id="四类LSA"><a href="#四类LSA" class="headerlink" title="四类LSA"></a>四类LSA</h3><pre><code>四类LSA：ASBR-summary-LSA： ABR汇总LSA
-        LSID：ASBR的router-id
-        通告路由器：ABR
-作用：描述ASBR的作用
-</code></pre>
-<h3 id="五类LSA"><a href="#五类LSA" class="headerlink" title="五类LSA"></a>五类LSA</h3><pre><code>五类构建AS外拓扑
-    OSPF环路假设：？？？
-    外部度量计算类型：
-    E type 1：内部度量+外部度量
-    E type 2：外部度量
-    1 优于 2
-修改外部度量计算类型？
-【r4-ospf-1】import-route rip type 1
-</code></pre>
-<h3 id="ABR"><a href="#ABR" class="headerlink" title="ABR"></a>ABR</h3><h4 id="ABR——区域间路由器，区域边界路由器"><a href="#ABR——区域间路由器，区域边界路由器" class="headerlink" title="ABR——区域间路由器，区域边界路由器"></a>ABR——区域间路由器，区域边界路由器</h4><pre><code>1）定义：连接了多个区域，并且有一个活动的接口处理骨干区域的路由，即为ABR。
-2）表示方式：ABR会在自身产生的一类LSA中，表明自己是一台ABR
-</code></pre>
-<h3 id="ABR的作用："><a href="#ABR的作用：" class="headerlink" title="ABR的作用："></a>ABR的作用：</h3><pre><code>1）将直连区域内的1类和2类LSA，转换成3类LSA，传递至其他区域。
+<p>next-hope：保证下一条可达（通告原则一）</p>
+<p>local-preference：影响出站流量及入站路由</p>
+<pre><code>只能在IBGP邻居间使用：越大越优先 默认=100
 
-2）将骨干区域内的3类LSA，转换成非骨干区域内的3类LSA。
+作用：通过修改优先级改变出站流量方向
 </code></pre>
-<h3 id="区域间"><a href="#区域间" class="headerlink" title="区域间"></a>区域间</h3><h4 id="区域间的路由计算："><a href="#区域间的路由计算：" class="headerlink" title="区域间的路由计算："></a>区域间的路由计算：</h4><pre><code>1）路由条目如何计算：通过3类LSA携带的LSID+Net mask计算出网络号和掩码信息
+<p>修改本地优先级：</p>
+<pre><code>1、创建ACL前缀列表：选取路由
+
+2、创建route-plicy：修改属性
+
+3、允许所有通过
+
+4、调用route-policy：
 </code></pre>
-<h4 id="区域间路由防环原则"><a href="#区域间路由防环原则" class="headerlink" title="区域间路由防环原则"></a>区域间路由防环原则</h4><pre><code>1）定义ABR设备，且定义了区域间路由的转换只能由ABR完成，而ABR是连接到骨干区域的，所以在OSPF区域设计，要保证非骨干区域与骨干区域相连。
-2）ABR永远不计算非骨干区域的三类LSA，即不加入路由表。
-3）非骨干区域有三类LSA，骨干区域肯定也有这条LSA。
+<p>MED：影响入站流量=cost</p>
+<pre><code>只能在EBGP邻居间使用：越小越优先 默认=0
+
+修改：
 </code></pre>
-<h3 id="虚拟链路"><a href="#虚拟链路" class="headerlink" title="虚拟链路"></a>虚拟链路</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><pre><code>1）虚链路属于区域0的逻辑链路
-2）虚链路不能穿越特殊区域
-3）虚链路只能穿越一个常规的非骨干区域
-4）区域0做了认证，由于虚链路属于0，也会启用认证
+<pre><code>1、创建ACL前缀列表：选取路由
+
+2、创建route-plicy：修改属性
+
+3、允许所有通过
+
+4、调用route-policy：
 </code></pre>
-<h3 id="OSPF汇总"><a href="#OSPF汇总" class="headerlink" title="OSPF汇总"></a>OSPF汇总</h3><p>1、在ABR上针对一个区域内的1类、2类LSA路由进行汇总</p>
-<p>2、汇总路由的cost，继承明细路由中最大的cost值</p>
-<p>3、明细路由出现震荡，汇总路由不会产生影响，只有当所有明细路由失效之后，汇总路由才会失效。</p>
-<p>4、如果有两个ABR，需要在两个ABR上进行汇总</p>
-<p>5、汇总中的防环：即ABR在一个区域内产生的一条3类LSA之后，如果在该区域也收到了其他ABR产生的相同3类，则不会计算该3类LSA。</p>
-<p>6、在ASBR上针对自身产生的外部路由进行汇总</p>
+<p>community：限定路由的传播范围；</p>
+<pre><code>            通过打标记对相同标记进行统一处理。
+
+            形式：N：M（100：1，1：1）
+
+            知名团体：
+
+            no-advertise：不将路由通告给任何邻居
+
+            no-export：不向外部通告任何路由
+
+为路由打团体属性：
+</code></pre>
+<pre><code>通告团体属性：【r1-bgp】peer 12.1。1.2 advertise-community
+
+查看团体属性：【r2】dis bgp routing-table community
+</code></pre>
+<p>BGP路由聚合：</p>
+<pre><code>减小路由表大小：
+
+        自动聚合：只对引入的路由有效，默认聚合成主类路由
+
+        手动聚合：
+</code></pre>
+<pre><code>【r3-bgp】aggregate 10.1.0.0 16 通告明细路由
+
+【r3-bgp】aggregate 10.1.0.0 16 detail-suppressed 抑制明细路由
+
+【r3-bgp】aggregate 10.1.0.0 16 detail-suppressed as-set 通告明细路由AS
+</code></pre>
+<h3 id="BGP路由选路原则"><a href="#BGP路由选路原则" class="headerlink" title="BGP路由选路原则"></a>BGP路由选路原则</h3><p>BGP路由器将路由通告给邻居后，每个BGP邻居都会进行路由优选，路由选择有三种情况：</p>
+<pre><code>1、该路由是到达目的地的唯一路由，直接优选。
+2、对到达同一目的地的多条路由，优选优先级最高的。
+3、对到达同一目的地且具有相同优先级的多条路由，必须用更细的原则去选择一条最优的。
+</code></pre>
+<p>一般来说，BGP计算路由优先级的规则如下：</p>
+<pre><code>1、丢弃下一跳不可达的路由。
+2、优选Preference_Value值最高的路由（私有属性，仅本地有效）。
+3、优选本地优先级（Local_Preference）最高的路由。
+4、优选手动聚合&gt;自动聚合&gt;network&gt;import&gt;从对等体学到的。
+5、优选AS_Path短的路由。
+6、起源类型IGP&gt;EGP&gt;Incomplete。
+7、对于来自同一AS的路由，优选MED值小的。
+8、优选从EBGP学来的路由（EBGP&gt;IBGP）。
+9、优选AS内部IGP的Metric最小的路由。
+10、优选Cluster_List最短的路由。
+11、优选Orginator_ID最小的路由。
+12、优选Router_ID最小的路由器发布的路由。
+13、优选具有较小IP地址的邻居学来的路由。
+</code></pre>
 
                 
             </div>
@@ -649,7 +604,7 @@ DR和BDR同时监听224.0.0.5和224.0.0.6
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/">http://example.com/2022/10/01/OSPF%E5%8D%8F%E8%AE%AE/</a>
+                    <a href="http://example.com/2022/10/14/BGP%E5%8D%8F%E8%AE%AE/">http://example.com/2022/10/14/BGP%E5%8D%8F%E8%AE%AE/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -687,8 +642,8 @@ DR和BDR同时监听224.0.0.5和224.0.0.6
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AF%A5%E6%AD%BB%E7%9A%84OSOF%E5%8D%8F%E8%AE%AE/">
-                                    <span class="chip bg-color">-该死的OSOF协议</span>
+                                <a href="/tags/%E5%A5%BD%E9%9A%BE%E8%AE%B0%E7%9A%84%E5%8D%8F%E8%AE%AE/">
+                                    <span class="chip bg-color">-好难记的协议</span>
                                 </a>
                             
                         </div>
@@ -734,28 +689,29 @@ DR和BDR同时监听224.0.0.5和224.0.0.6
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/10/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9E%B6%E6%9E%84-%E6%90%AD%E5%BB%BA-WAF%E7%AD%89/">
+                <a href="/2022/10/14/BGP%E5%8D%8F%E8%AE%AE/">
                     <div class="card-image">
                         
-                        <img src="https://image.3001.net/images/20220806/1659747226117.jpg" class="responsive-img" alt="信息收集-架构-搭建-WAF等">
+                        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.wljslmz.cn%2Fwljslmzcn%2F202206151148413.png&refer=http%3A%2F%2Fimg.wljslmz.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1668307893&t=9e1f2079249cd6c145d908a567c73ebf" class="responsive-img" alt="BGP协议">
                         
-                        <span class="card-title">信息收集-架构-搭建-WAF等</span>
+                        <span class="card-title">BGP协议</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            记录一下个人学习笔记
+                            是BGP协议
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -764,11 +720,12 @@ DR和BDR同时监听224.0.0.5和224.0.0.6
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
-                        <span class="chip bg-color">学习记录</span>
+                    <a href="/tags/%E5%A5%BD%E9%9A%BE%E8%AE%B0%E7%9A%84%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">-好难记的协议</span>
                     </a>
                     
                 </div>
@@ -782,24 +739,23 @@ DR和BDR同时监听224.0.0.5和224.0.0.6
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/28/hello-world/">
+                <a href="/2022/10/13/ISIS%E5%8D%8F%E8%AE%AE/">
                     <div class="card-image">
                         
+                        <img src="https://s2.loli.net/2022/10/13/h5MD6cUgsT3jzVI.png" class="responsive-img" alt="ISIS协议">
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">ISIS协议</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            记录一下个人学习笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-13
                             </span>
                         <span class="publish-author">
                             
@@ -808,6 +764,14 @@ DR和BDR同时监听224.0.0.5和224.0.0.6
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ISIS%E5%8D%8F%E8%AE%AE%E6%98%AF%E6%9C%80%E5%A5%BD%E7%9A%84/">
+                        <span class="chip bg-color">-ISIS协议是最好的</span>
+                    </a>
+                    
                 </div>
                 
             </div>
